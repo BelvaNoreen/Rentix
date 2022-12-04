@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtiketController;
+use App\Http\Controllers\AkunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('/etikets', EtiketController::class)->except(
     ['create','edit']
 );
+
+Route::post('/register', [AkunController::class, 'register']);
+Route::post('/login', [AkunController::class, 'login']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AkunController::class, 'logout']);
+});
