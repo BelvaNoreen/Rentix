@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtiketController;
 use App\Http\Controllers\AkunController;
+use App\Http\Controllers\PesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('/etikets', EtiketController::class)->except(
+    ['create','edit']
+);
+
+Route::resource('/pemesanans', PesananController::class)->except(
     ['create','edit']
 );
 
